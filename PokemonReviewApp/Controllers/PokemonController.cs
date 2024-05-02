@@ -38,7 +38,7 @@ namespace PokemonReviewApp.Controllers
 
             var pokemon = _pokemonRepository.GetPokemon(pokeId);
 
-            var newPokemon = new PokemonDto
+            var pokemonDto = new PokemonDto
             {
                 Id = pokemon.Id,
                 Name = pokemon.Name,
@@ -48,7 +48,7 @@ namespace PokemonReviewApp.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(newPokemon);
+            return Ok(pokemonDto);
         }
 
         [HttpGet("{pokeId}/rating")]
