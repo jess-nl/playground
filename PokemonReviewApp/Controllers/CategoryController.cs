@@ -71,7 +71,7 @@ namespace PokemonReviewApp.Controllers
             }).ToList();
 
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(ModelState);
 
             return Ok(pokemonsDto);
         }

@@ -62,7 +62,7 @@ namespace PokemonReviewApp.Controllers
             var rating = _pokemonRepository.GetPokemonRating(pokeId);
 
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(ModelState);
 
             return Ok(rating);
         }
