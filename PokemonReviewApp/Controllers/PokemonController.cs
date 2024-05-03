@@ -22,10 +22,17 @@ namespace PokemonReviewApp.Controllers
         {
             var pokemons = _pokemonRepository.GetPokemons();
 
+            var pokemonsDto = pokemons.Select(p => new PokemonDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                BirthDate = p.BirthDate
+            }).ToList();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return Ok(pokemons);
+            return Ok(pokemonsDto);
         }
 
         [HttpGet("{pokeId}")]
