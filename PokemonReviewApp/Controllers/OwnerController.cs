@@ -28,7 +28,7 @@ namespace PokemonReviewApp.Controllers
                 FirstName = o.FirstName,
                 LastName = o.LastName,
                 Gym = o.Gym
-            });
+            }).ToList();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -77,7 +77,7 @@ namespace PokemonReviewApp.Controllers
                 Id = p.Id,
                 Name = p.Name,
                 BirthDate = p.BirthDate
-            });
+            }).ToList();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
