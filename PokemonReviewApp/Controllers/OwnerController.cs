@@ -10,10 +10,12 @@ namespace PokemonReviewApp.Controllers
     public class OwnerController : Controller
     {
         private readonly IOwnerRepository _ownerRepository;
+        private readonly ICountryRepository _countryRepository;
 
-        public OwnerController(IOwnerRepository ownerRepository)
+        public OwnerController(IOwnerRepository ownerRepository, ICountryRepository countryRepository)
         {
             _ownerRepository = ownerRepository;
+            _countryRepository = countryRepository;
         }
 
         [HttpGet]
@@ -83,6 +85,45 @@ namespace PokemonReviewApp.Controllers
                 return BadRequest(ModelState);
 
             return Ok(pokemonsDto);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public IActionResult CreateOwner([FromQuery] int countryId, [FromBody] OwnerDto ownerCreate)
+        {
+            if (ownerCreate == null)
+                return BadRequest(ModelState);
+
+            var ownerFound = _ownerRepository.GetOwners()
+                .Where(c => c.LastName.Trim().ToLower() == ownerCreate.LastName.TrimEnd().ToLower())
+                .FirstOrDefault();
+
+            if (ownerFound != null)
+            {
+                ModelState.AddModelError("", "Owner already exists");
+                return StatusCode(422, ModelState);
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var ownerMap = new Owner
+            {
+                FirstName = ownerCreate.FirstName,
+                LastName = ownerCreate.LastName,
+                Gym = ownerCreate.Gym
+            };
+
+            ownerMap.Country = _countryRepository.GetCountry(countryId);
+
+            if (!_ownerRepository.CreateOwner(ownerMap))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok("Successfully created");
         }
     }
 }
