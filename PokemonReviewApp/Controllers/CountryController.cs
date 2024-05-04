@@ -84,7 +84,7 @@ namespace PokemonReviewApp.Controllers
                 return BadRequest(ModelState);
 
             var countryFound = _countryRepository.GetCountries()
-                .Where(c => c.Name.Trim().ToUpper() == countryCreate.Name.TrimEnd().ToUpper())
+                .Where(c => c.Name.Trim().ToLower() == countryCreate.Name.TrimEnd().ToLower())
                 .FirstOrDefault();
 
             if (countryFound != null)

@@ -85,7 +85,7 @@ namespace PokemonReviewApp.Controllers
                 return BadRequest(ModelState);
 
             var categoryFound = _categoryRepository.GetCategories()
-                .Where(c => c.Name.Trim().ToUpper() == categoryCreate.Name.TrimEnd().ToUpper())
+                .Where(c => c.Name.Trim().ToLower() == categoryCreate.Name.TrimEnd().ToLower())
                 .FirstOrDefault();
 
             if (categoryFound != null)
