@@ -64,12 +64,12 @@ namespace PokemonReviewApp.Controllers
             return Ok(reviewDto);
         }
 
-        [HttpGet("pokemon/{pokeId}")]
+        [HttpGet("pokemon/{pokemonId}")]
         [ProducesResponseType(200, Type = typeof(Review))]
         [ProducesResponseType(400)]
-        public IActionResult GetReviewsForAPokemon(int pokeId)
+        public IActionResult GetReviewsForAPokemon(int pokemonId)
         {
-            var reviews = _reviewRepository.GetReviewsOfPokemon(pokeId);
+            var reviews = _reviewRepository.GetReviewsOfPokemon(pokemonId);
 
             var reviewsDto = reviews.Select(r => new ReviewDto
             {
