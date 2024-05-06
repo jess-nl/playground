@@ -1,5 +1,4 @@
 ﻿using PokemonReviewApp.Data;
-using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
