@@ -8,7 +8,7 @@ C#/.NET projects to sharpen my skills, revise, practice and learn.
 
     > *Web API, MVC, CRUD*
 
-    - Based on the following YouTube tutorial playlist, [ASP.NET Core Web API .NET 6](https://www.youtube.com/watch?v=_8nLSsK5NDo&list=PL82C6-O4XrHdiS10BLh23x71ve9mQCln0)
+    - Based on the following YouTube tutorial playlist, [ASP.NET Core Web API .NET 6 2022](https://www.youtube.com/watch?v=_8nLSsK5NDo&list=PL82C6-O4XrHdiS10BLh23x71ve9mQCln0)
 
     What I did differently from tutorial:
    - Employ *.NET 8* instead of *.NET 6*
@@ -18,7 +18,7 @@ C#/.NET projects to sharpen my skills, revise, practice and learn.
    - Edit logic for `GetPokemonByOwner()` as it should return a list, not a single object
 
 2. DotNet8IdentityAuthentication
-    > *Authentication, authorization, Identity of Entity Framework*
+    > *Authentication, authorization, Identity of Entity Framework (bearer token + cookies)*
     
     - Based on the following YouTube tutorial, [.NET 8 Authentication with Identity in a Web API with Bearer Tokens & Cookies](https://www.youtube.com/watch?v=8J3nuUegtL4)
 
@@ -33,3 +33,8 @@ C#/.NET projects to sharpen my skills, revise, practice and learn.
 
     What I did differently from tutorial:
     - Employ .NET 8 instead of .NET 7
+
+4. UnitTests
+    > *FluentAssertions, FakeItEasy*
+
+    - Based on the following YouTube tutorial playlist, [Unit Testing in C# 2022](https://www.youtube.com/watch?v=aq3IbO0RwAQ&list=PL82C6-O4XrHeyeJcI5xrywgpfbrqdkQd4)
